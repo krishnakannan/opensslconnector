@@ -1,7 +1,7 @@
 READ ME
 
-This is a simple application which connects to a server securely.
-This connects to a openssl (s_server) with a host name and port number.
+This is a simple android application which connects to a server securely.
+This connects to an openssl (s_server) with a host name and port number.
 After establishing connection, User can send text commands and receive
 the reply from the server and view it in this app. 
 
