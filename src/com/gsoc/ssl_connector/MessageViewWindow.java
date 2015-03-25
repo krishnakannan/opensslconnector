@@ -31,11 +31,11 @@ public class MessageViewWindow extends Activity {
 	SSLSocket socket;
 	SSLSession session;
 	PrintWriter out;
-	Thread t;
+	Thread thread;
 	String line;
 	String reply;
 	String command = null;
-	StringBuilder sb = null;
+	StringBuilder sBuilder = null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -62,14 +62,15 @@ public class MessageViewWindow extends Activity {
 		Button sendMsgBtn = (Button) findViewById(R.id.sendMsgButton);
 		sendMsgBtn.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-
+				
 				command = commands.getText().toString();
+				commands.setText("");
 				msgTextView.setText(command+"");
 				if(command != "")
 				{
-					t = new Thread(new Runnable() {
+					thread = new Thread(new Runnable() {
 						public void run() {
-
+							BufferedReader in = null;
 							try
 							{
 								reply = "";
@@ -86,9 +87,9 @@ public class MessageViewWindow extends Activity {
 								out.println(command);
 								out.println();
 								out.flush();
-								BufferedReader in = new BufferedReader(
+								in = new BufferedReader(
 										new InputStreamReader(socket.getInputStream()));
-								sb = new StringBuilder();
+								sBuilder = new StringBuilder();
 								long startTime = System.currentTimeMillis();
 								long waitTime = 3000;
 								long endTime = startTime + waitTime;
@@ -97,8 +98,8 @@ public class MessageViewWindow extends Activity {
 
 									line  = in.readLine();
 									if(line != "null" && line !=null)
-										sb.append(line);
-									reply = sb.toString();
+										sBuilder.append(line);
+									reply = sBuilder.toString();
 									reply.replaceAll("null", "");
 									if(reply == null || reply == "")
 									{
@@ -111,6 +112,7 @@ public class MessageViewWindow extends Activity {
 											pBar.setVisibility(View.INVISIBLE);
 										}
 									});
+									
 								}
 
 
@@ -129,14 +131,26 @@ public class MessageViewWindow extends Activity {
 							}
 							finally
 							{
-
+								try 
+								{
+									in.close();
+								} 
+								catch (final IOException e) 
+								{
+									runOnUiThread(new Runnable() {
+										@Override
+										public void run() {
+											msgTextView.setText(e.toString());
+											pBar.setVisibility(View.INVISIBLE);
+										}
+									});
+								}
 								out.close();
-
 							}
 
 						}
 					});
-					t.start();
+					thread.start();
 				}
 			}
 		});
@@ -159,8 +173,8 @@ public class MessageViewWindow extends Activity {
 
 		if(socket != null)
 		{
-			t.interrupt();
-			t = null;
+			thread.interrupt();
+			thread = null;
 			out.close();
 			CloseConnection cc = new CloseConnection();
 			cc.execute(null,null,null);
@@ -259,6 +273,18 @@ public class MessageViewWindow extends Activity {
 			return null;
 		}
 
+		 @Override
+		   protected void onPostExecute(String result) {
+		     if(socket == null)
+		     {
+		    	 	EditText commands = (EditText) findViewById(R.id.commands);
+		 			Button sendMsgBtn = (Button) findViewById(R.id.sendMsgButton);
+		 			
+		 			commands.setVisibility(View.INVISIBLE);
+		 			sendMsgBtn.setVisibility(View.INVISIBLE);
+		     }
+		   }
+		
 		private String getDate(long time) {
 			Calendar cal = Calendar.getInstance(Locale.ENGLISH);
 			cal.setTimeInMillis(time);

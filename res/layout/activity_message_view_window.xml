@@ -51,6 +51,7 @@
         android:layout_above="@+id/sendMsgButton"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
+        android:hint="@string/command_hint"
         android:ems="10" />
    
 </RelativeLayout>

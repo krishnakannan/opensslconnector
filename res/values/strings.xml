@@ -8,6 +8,7 @@
     <string name="mainpage_next">Enter the host along with port of the secure server (openssl s_server)</string>
     <string name="host_hint">Enter the host</string>
     <string name="port_hint">Enter the port</string>
+    <string name="command_hint">Enter the command</string>
     <string name="mainpage_button">Establish Connection</string>
     <string name="title_activity_message_view_window">MessageViewWindow</string>
 	<string name="msgwindow_close_button">Close Window</string>
