@@ -25,8 +25,10 @@ public class MainActivity extends Activity {
 		final Button button = (Button) findViewById(R.id.mainpage_button);
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				String hostString, portString;
-				EditText hostText, portText;
+				String hostString;
+				String portString;
+				EditText hostText;
+				EditText portText;
 				Integer portNumber;
 
 				Intent msgWindowIntent = new Intent(getApplicationContext(), MessageViewWindow.class);
@@ -36,7 +38,7 @@ public class MainActivity extends Activity {
 
 				hostString = hostText.getText().toString();
 				portString = portText.getText().toString();
-				if(hostString.equals("") || hostString == null || portString.equals("") || portString == null)
+				if(  hostString == null || hostString.equals("") || portString == null || portString.equals(""))
 				{
 					Toast toast = Toast.makeText(getApplicationContext(), "Please check host/port String", Toast.LENGTH_LONG);
 					toast.show();
