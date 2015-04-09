@@ -9,8 +9,20 @@
     <string name="host_hint">Enter the host</string>
     <string name="port_hint">Enter the port</string>
     <string name="command_hint">Enter the command</string>
-    <string name="mainpage_button">Establish Connection</string>
+    <string name="mainpage_button">Proceed</string>
     <string name="title_activity_message_view_window">MessageViewWindow</string>
-	<string name="msgwindow_close_button">Close Window</string>
-	<string name="msgwindow_get_new_message_button">Send command to the Server</string>
+    <string name="msgwindow_close_button">Close Window</string>
+    <string name="msgwindow_get_new_message_button">Send command to the Server</string>
+    <string name="title_activity_choose_cert">ChooseCert</string>
+    <string name="choose_cert_textView">Please select the type of server you would like to connect with</string>
+    <string name="choose_cert_button">Establish Connection</string>
+    <string name="choose_cert_valid_cert">Server with valid certificate</string>
+    <string name="choose_cert_own_cert">Server with own certificate</string>
+    <string name="choose_cert_no_cert">Server with no certificate</string>
+    <string name="title_activity_cipher_suites">CipherSuites</string>
+    <string name="ciphersuites_textView">Since there is no Certificate, the connection will use Anonymous Diffie-Hellman algorithms. Please enter the ADH Cipher Suites used in the server to establish connection.</string>
+    <string name="ciphersuites_textView_caution">Caution \n *** This method is vulnerable to Man In The Middle Attack ***</string>
+    <string name="ciphersuites_hint">Enter the algorithm suite</string>
+    <string name="ciphersuites_button">Establish Connection</string>
+
 </resources>

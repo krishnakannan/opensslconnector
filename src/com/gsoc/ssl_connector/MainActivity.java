@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
 				EditText portText;
 				Integer portNumber;
 
-				Intent msgWindowIntent = new Intent(getApplicationContext(), MessageViewWindow.class);
+				Intent chooseCertificateIntent = new Intent(getApplicationContext(), ChooseCert.class);
 
 				hostText = (EditText) findViewById(R.id.editText_Host);
 				portText = (EditText) findViewById(R.id.editText_Port); 
@@ -50,9 +50,9 @@ public class MainActivity extends Activity {
 					try
 					{
 						portNumber = Integer.parseInt(portString);
-						msgWindowIntent.putExtra("hostString", hostString);
-						msgWindowIntent.putExtra("portString", portNumber);
-						startActivity(msgWindowIntent);
+						chooseCertificateIntent.putExtra("hostString", hostString);
+						chooseCertificateIntent.putExtra("portString", portNumber);
+						startActivity(chooseCertificateIntent);
 					}
 					catch(NumberFormatException e)
 					{
