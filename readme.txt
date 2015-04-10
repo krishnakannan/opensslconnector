@@ -1,5 +1,7 @@
 READ ME
 
+Version - 1.0 
+
 This is a simple android application which connects to a server securely.
 This connects to an openssl (s_server) with a host name and port number.
 After establishing connection, User can send text commands and receive
@@ -40,4 +42,9 @@ After connection
 <A logout>
 <Receive Messages from the server>
 
+Version 1.1
+
+Extended the application to accept the certificate signed by own certificate 
+authority and when no certificate is sent by the server during the connection
+establishment.
       

@@ -46,7 +46,7 @@ public class CipherSuites extends Activity {
 				suite = ciphers.get(enteredAlgo);
 				if(suite == null || suite.equals(""))
 				{
-					Toast csToast = Toast.makeText(getApplicationContext(), "Please enter some cipher suites", Toast.LENGTH_LONG);
+					Toast csToast = Toast.makeText(getApplicationContext(), "Please enter valid cipher suites", Toast.LENGTH_LONG);
 					csToast.show();
 				}
 				else
