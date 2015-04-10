@@ -34,9 +34,10 @@
         android:layout_alignRight="@+id/ciphersuites_textView_caution"
         android:layout_below="@+id/ciphersuites_textView_caution"
         android:layout_marginTop="52dp"
-        android:ems="10"
         android:singleLine="true"
-        android:hint="@string/ciphersuites_hint" >
+        android:imeOptions="actionDone"
+        android:hint="@string/ciphersuites_hint" 
+        android:ems="10">
 
         <requestFocus />
     </EditText>

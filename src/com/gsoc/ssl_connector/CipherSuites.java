@@ -14,8 +14,8 @@ import android.widget.Toast;
 
 public class CipherSuites extends Activity {
 
-	String suite;
-	String hostName;
+	String suite = null;
+	String hostName = null;
 	Integer portNumber;
 	Integer certType;
 	Map<String,String> ciphers = new HashMap<String,String>();

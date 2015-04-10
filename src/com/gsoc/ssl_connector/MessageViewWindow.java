@@ -41,8 +41,8 @@ public class MessageViewWindow extends Activity {
 	SSLSession session;
 	PrintWriter out;
 	Thread thread;
-	String line;
-	String reply;
+	String line = null;
+	String reply = null;
 	String command = null;
 	StringBuilder sBuilder = null;
 	@Override
@@ -50,8 +50,8 @@ public class MessageViewWindow extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_message_view_window);
 
-		String hostName;
-		Integer portNumber;
+		String hostName = null;
+		Integer portNumber = null;
 		Integer certType;
 		String suite = "DEFAULT";
 		final TextView msgTextView = (TextView) findViewById(R.id.msgTextView);
@@ -222,10 +222,10 @@ public class MessageViewWindow extends Activity {
 
 	class EstablishConn extends AsyncTask<String, Void, String>
 	{
-		String hostName;
+		String hostName = null;
 		Integer portNumber;
 		Integer certType;
-		String suite;
+		String suite = null;
 
 		TextView msgTextView = (TextView) findViewById(R.id.msgTextView);
 		ProgressBar pBar = (ProgressBar) findViewById(R.id.progressBar1);

@@ -12,7 +12,7 @@ import android.widget.RadioGroup;
 
 public class ChooseCert extends Activity {
 
-	String hostName;
+	String hostName = null;
 	Integer portNumber;
 	RadioButton selectedRadioBtn;
 
@@ -69,7 +69,7 @@ public class ChooseCert extends Activity {
 				{
 					selectCipherSuiteIntent.putExtra("hostString", hostName);
 					selectCipherSuiteIntent.putExtra("portString", portNumber);
-					selectCipherSuiteIntent.putExtra("certType", 2);
+					selectCipherSuiteIntent.putExtra("certType", 3);
 					startActivity(selectCipherSuiteIntent);
 					finish();
 				}
